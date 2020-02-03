@@ -68,6 +68,7 @@ const getWeather = () => {
     wind.textContent = windRes;
     pressure.textContent = pressureRes;
     input.value = '';
+    warning.textContent = '';
    
   }).catch(() => warning.textContent = 'Wpisz poprawną nazwę miasta');
 }

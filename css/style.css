@@ -137,3 +137,40 @@ button:hover {
 .warning {
   color: red;
 }
+
+@media (max-width: 767px) {
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    background: wheat;
+  }
+
+  .container {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+  }
+
+  .app {
+    margin: 0;
+    box-shadow: none;
+  }
+
+  .title h1 {
+    font-size: 24px;
+  }
+
+  .dayInfo {
+    padding: 10px;
+  }
+
+  .weatherInfo {
+    flex-wrap: wrap;
+  }
+
+  .wiWrapp {
+    height: 50px;
+    padding: 20px 10px;
+  }
+}

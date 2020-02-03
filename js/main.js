@@ -24,7 +24,7 @@ const wind = document.querySelector('.wind');
 const pressure = document.querySelector('.pressure');
 
 // let city;
-let city = 'Warszawa';
+let city = 'New York';
 let url;
 
 const getWeather = () => {
@@ -39,9 +39,13 @@ const getWeather = () => {
     const name = res.data.name;
     const countryRes = res.data.sys.country;
 
-    // const timeZoneRes = 
+    const dayTime = new Date().toLocaleDateString();
     
-    // const myTime = 
+    
+
+    const sunriseRes = new Date(res.data.sys.sunrise*1000).toLocaleTimeString();
+    const sunsetRes = new Date(res.data.sys.sunset*1000).toLocaleTimeString();
+    
 
     const tempRes = res.data.main.temp;
     const feelsLikeRes = res.data.main.feels_like;
@@ -53,14 +57,15 @@ const getWeather = () => {
     const pressureRes = res.data.main.pressure + 'hPa'
 
 
+
     console.log(data);
+    console.log();
     cityName.textContent = name;
     country.textContent = countryRes;
-    // timeZone.textContent = timeZoneRes;
 
-    // dayTime.textContent = res.data.name;
-    // sunrise.textContent = res.data.name;
-    // sunset.textContent = res.data.name;
+    day.textContent = dayTime
+    sunrise.textContent = sunriseRes;
+    sunset.textContent = sunsetRes;
     temperature.textContent = Math.floor(tempRes) + '°C';
     feelsLike.textContent = Math.floor(feelsLikeRes) + '°C';
     main.textContent = mainRes;

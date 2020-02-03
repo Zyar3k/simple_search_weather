@@ -1,3 +1,139 @@
-.image {
-  background-color: blue;
+body {
+  background: burlywood;
+  text-align: center;
+  color: rgb(245, 201, 148);
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1140px;
+}
+
+.app{
+  margin: 50px auto;
+  max-width: 600px;
+  min-height: 600px;
+  border-radius: 20px;
+  box-shadow: rgb(199, 166, 123) 1px 1px 8px;
+}
+
+.title {
+  padding-top: 10px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+}
+
+.title h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.subtitleWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.cityWrapper {
+  display: flex;
+  font-size: 42px;
+  margin: auto 0;
+}
+
+.country {
+  padding-left: 20px;
+  font-size: 20px;
+}
+
+.subtitleWrapper img {
+  margin: 0;
+  padding: 0;
+  height: 160px;
+}
+
+.tempSection {
+  display: flex;
+  justify-content: center;
+}
+
+.tempWrapper {
+  padding: 10px 40px;
+}
+
+.tempWrapper :last-child {
+  margin-top: 10px;
+  font-size: 10px;
+}
+
+.temp, .feelsLike {
+  font-size: 60px;
+}
+
+.dayInfo {
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.infoWrapp :first-child {
+  font-size: 14px;
+}
+
+.infoWrapp :last-child {
+  padding-top: 10px;
+  font-size: 20px;
+}
+
+.weatherInfo {
+  display: flex;
+  justify-content: space-around;
+}
+
+.dataValue {
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+  font-weight: 700;
+  color: #3a3636;
+}
+
+.dataConst {
+  color: grey;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 1px rgb(63, 59, 59);
+  letter-spacing: 2px;
+}
+
+.inputWrapper {
+  margin-bottom: 40px;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  height: 50px;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  text-align: inherit;
+  border: none;
+  border-radius: 10px;
+  background: rgb(228, 193, 149);
+}
+
+button {
+  height: 50px;
+  width: 70px;
+  margin-left: 20px;
+  border: none;
+  border: 1px solid rgb(228, 193, 149);
+  border-radius: 10px;
+  background: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+  background: rgb(228, 193, 149);
+}
+
+.warning {
+  color: red;
 }

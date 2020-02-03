@@ -21,8 +21,8 @@ const input = document.querySelector('input'),
       clouds = document.querySelector('.clouds'),
       humidity = document.querySelector('.humidity'),
       wind = document.querySelector('.wind'),
-      pressure = document.querySelector('.pressure'),
-      description = document.querySelector('.description');
+      pressure = document.querySelector('.pressure');
+      // description = document.querySelector('.description');
 
 let city;
 let url;
@@ -45,18 +45,18 @@ const getWeather = () => {
           mainStatus = Object.assign({}, ...res.data.weather),
           mainRes = mainStatus.main,
           icon = mainStatus.icon,
-          descriptionRes = mainStatus.description,
+          // descriptionRes = mainStatus.description,
           cloudsRes = res.data.clouds.all,
           humidityRes = res.data.main.humidity  + '%',
-          windRes  = res.data.wind.speed + 'km/h',
-          pressureRes = res.data.main.pressure + 'hPa';
+          windRes  = res.data.wind.speed + ' km/h',
+          pressureRes = res.data.main.pressure + ' hPa';
 
     image.setAttribute('src', 'http://openweathermap.org/img/wn/' + icon + '@2x.png');
 
     
     cityName.textContent = name;
-    country.textContent = countryRes;
-    description.textContent = descriptionRes;
+    country.textContent = `(${countryRes})`;
+    // description.textContent = descriptionRes;
     day.textContent = dayTime;
     sunrise.textContent = sunriseRes;
     sunset.textContent = sunsetRes;

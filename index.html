@@ -4,57 +4,77 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    
     <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <title>Search weather</title>
+    <title>Pogodynka</title>
   </head>
   <body>
-
-    <h1>pogoda</h1>
-
-    <img src="" alt="pogoda" class="image">
-    <div>Opis</div>
-    <div class="description"></div>
-    
-    <div>Miasto</div>
-    <div class="cityName"></div>
-    <input type="text" placeholder="Wpisz nazwę miasta..."><button>Wyślij</button>
-    <div class="warning"></div>
-    <div>Kraj</div>
-    <div class="country"></div>
-    <div>
-      <div>Data</div>
-      <div class="day"></div>
-      <div>Wschód</div>
-      <div class="sunrise"></div>
-      <div>Zachód</div>
-      <div class="sunset"></div>
+    <div class="container">
+      <div class="app">
+        <div class="title">
+          <h1>Aktualna pogoda w mieście</h1>
+          <div class="subtitleWrapper">
+            <div class="cityWrapper">
+              <div class="cityName dataValue"></div>
+              <div class="country dataValue"></div>
+            </div>
+            <img src="" alt="pogoda" class="image">
+          </div>
+        </div>  
+        <div class="tempSection">
+          <div class="tempWrapper">
+            <div class="temp dataValue"></div>
+            <div class="dataConst">Temperatura</div>
+          </div>
+          <div class="tempWrapper">
+            <div class="feelsLike dataValue"></div>
+            <div class="dataConst">Temp. odczuwalna</div>
+          </div>
+        </div>
+        <div class="dayInfo">
+          <div class="infoWrapp">
+            <div class="dataConst">Wschód Słońca</div>
+            <div class="sunrise dataValue"></div>
+          </div>
+          <div class="infoWrapp">
+            <div class="dataConst">Data</div>
+            <div class="day dataValue"></div>
+          </div>
+          <div class="infoWrapp">
+            <div class="dataConst">Zachód Słońca</div>
+            <div class="sunset dataValue"></div>
+          </div>
+        </div>
+        <div class="weatherInfo">
+          <div class="wiWrapp">
+            <div class="dataConst">Pogoda</div>
+            <p class="main dataValue"></p>
+          </div>
+          <div class="wiWrapp">
+            <div class="dataConst">Zachmurzenie</div>
+            <p class="clouds dataValue"></p>
+          </div>
+          <div class="wiWrapp">
+            <div class="dataConst">Wilgotność</div>
+            <p class="humidity dataValue"></p>
+          </div>
+          <div class="wiWrapp">
+            <div class="dataConst">Wiatr</div>
+            <p class="wind dataValue"></p>
+          </div>
+          <div class="wiWrapp">
+            <div class="dataConst">Ciśnienie</div>
+            <p class="pressure dataValue"></p>
+          </div> 
+        </div>
+        <div class="inputWrapper">
+          <div>
+            <input type="text" placeholder="podaj nazwę miasta...">
+            <div class="warning"></div>
+          </div>
+          <button>Sprawdź</button>
+        </div>
+      </div>
     </div>
-    <div>Temperatura</div>
-    <div class="temp"></div>
-    <div>Odczuwalna</div>
-    <div class="feelsLike"></div>
-    <div>
-      <div>Poogda</div>
-      <div class="main"></div>
-      <div>Zachmurzenie</div>
-      <div class="clouds"></div>
-      <div>Wilgotność</div>
-      <div class="humidity"></div>
-      <div>Wiatr</div>
-      <div class="wind"></div>
-      <div>Ciśnienie</div>
-      <div class="pressure"></div>
-
-    </div>
-
-
-
-
-
-
-
-      
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./js/main.js"></script>
   </body>

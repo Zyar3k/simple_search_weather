@@ -4,66 +4,60 @@ const apiLink = 'https://api.openweathermap.org/data/2.5/weather?q=';
 const apiKey = '&APPID=183d4af22c5b654ede3953c40f485cdf';
 const units = '&units=metric';
 
-const input = document.querySelector('input');
-const btn = document.querySelector('button');
+const input = document.querySelector('input'),
+      btn = document.querySelector('button'),
+      image = document.querySelector('.image'),
+      cityName = document.querySelector('.cityName'),
+      warning = document.querySelector('.warning'),
+      country = document.querySelector('.country'),
+      timeZone = document.querySelector('.timeZone'),
+      day = document.querySelector('.day'),
+      dayTime = document.querySelector('.dayTime'),
+      sunrise = document.querySelector('.sunrise'),
+      sunset = document.querySelector('.sunset'),
+      temperature = document.querySelector('.temp'),
+      feelsLike = document.querySelector('.feelsLike'),
+      main = document.querySelector('.main'),
+      clouds = document.querySelector('.clouds'),
+      humidity = document.querySelector('.humidity'),
+      wind = document.querySelector('.wind'),
+      pressure = document.querySelector('.pressure'),
+      description = document.querySelector('.description');
 
-const cityName = document.querySelector('.cityName');
-const warning = document.querySelector('.warning');
-const country = document.querySelector('.country');
-const timeZone = document.querySelector('.timeZone');
-const day = document.querySelector('.day');
-const dayTime = document.querySelector('.dayTime');
-const sunrise = document.querySelector('.sunrise');
-const sunset = document.querySelector('.sunset');
-const temperature = document.querySelector('.temp');
-const feelsLike = document.querySelector('.feelsLike');
-const main = document.querySelector('.main');
-const clouds = document.querySelector('.clouds');
-const humidity = document.querySelector('.humidity');
-const wind = document.querySelector('.wind');
-const pressure = document.querySelector('.pressure');
-
-// let city;
-let city = 'New York';
+let city;
 let url;
 
 const getWeather = () => {
+  city = (!input.value) ? 'Kraków' : input.value;
   url = apiLink + city + apiKey + 
   units;
 
-  
-
   axios.get(url)
   .then(res => {
-    const data = res.data;
-    const name = res.data.name;
-    const countryRes = res.data.sys.country;
+    const data = res.data,
+          name = res.data.name,
+          countryRes = res.data.sys.country,
+          dayTime = new Date().toLocaleDateString(),
+          sunriseRes = new Date(res.data.sys.sunrise*1000).toLocaleTimeString(),
+          sunsetRes = new Date(res.data.sys.sunset*1000).toLocaleTimeString(),
+          tempRes = res.data.main.temp,
+          feelsLikeRes = res.data.main.feels_like,
+          mainStatus = Object.assign({}, ...res.data.weather),
+          mainRes = mainStatus.main,
+          icon = mainStatus.icon,
+          descriptionRes = mainStatus.description,
+          cloudsRes = res.data.clouds.all,
+          humidityRes = res.data.main.humidity  + '%',
+          windRes  = res.data.wind.speed + 'km/h',
+          pressureRes = res.data.main.pressure + 'hPa';
 
-    const dayTime = new Date().toLocaleDateString();
+    image.setAttribute('src', 'http://openweathermap.org/img/wn/' + icon + '@2x.png');
+
     
-    
-
-    const sunriseRes = new Date(res.data.sys.sunrise*1000).toLocaleTimeString();
-    const sunsetRes = new Date(res.data.sys.sunset*1000).toLocaleTimeString();
-    
-
-    const tempRes = res.data.main.temp;
-    const feelsLikeRes = res.data.main.feels_like;
-    const mainStatus = Object.assign({}, ...res.data.weather);
-    const mainRes = mainStatus.main;
-    const cloudsRes = res.data.clouds.all;
-    const humidityRes = res.data.main.humidity  + '%';
-    const windRes  = res.data.wind.speed + 'km/h';
-    const pressureRes = res.data.main.pressure + 'hPa'
-
-
-
-    console.log(data);
-    console.log();
     cityName.textContent = name;
     country.textContent = countryRes;
-
-    day.textContent = dayTime
+    description.textContent = descriptionRes;
+    day.textContent = dayTime;
     sunrise.textContent = sunriseRes;
     sunset.textContent = sunsetRes;
     temperature.textContent = Math.floor(tempRes) + '°C';
@@ -73,10 +67,17 @@ const getWeather = () => {
     humidity.textContent = humidityRes;
     wind.textContent = windRes;
     pressure.textContent = pressureRes;
-
-    
-  });
+    input.value = '';
+   
+  }).catch(() => warning.textContent = 'Wpisz poprawną nazwę miasta');
 }
+const enterCheck = () => {
+  if(event.keyCode === 13) {
+    getWeather();
+  }
+};
 
 
 getWeather();
+btn.addEventListener('click', getWeather);
+input.addEventListener('keyup', enterCheck);
